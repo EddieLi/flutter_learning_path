@@ -1,94 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(new MaterialApp(
-  home: BottomNav(),
+  home: new HomeScreen(),
+  debugShowCheckedModeBanner: false,
 ));
 
-class BottomNav extends StatefulWidget {
-  BottomNav({Key key}) : super(key: key);
 
-  _BottomNavState createState() => _BottomNavState();
-}
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key key}) : super(key: key);
 
-class _BottomNavState extends State<BottomNav> {
-  int _currentIndex = 0;
-  final List<Widget> _children = [
-    Home(),
-    ShareFiles(),
-    Chat(),
-  ];
-  void switchTabs(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-  
   @override
   Widget build(BuildContext context) {
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarIconBrightness: Brightness.light
+    ));
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Teacher's Corner",
-        style: TextStyle(
-          fontSize: 30.0
-        ))
-      ),
+      body: Stack(
+        children: <Widget> [
+          new Image.asset(
+            'images/background.jpg',
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center
+            ),
 
-      body: _children[_currentIndex],
+            Container(
+              alignment: Alignment.topCenter,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(15.0),),
 
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: switchTabs,
-        currentIndex: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Home"),
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_file),
-            title: Text("Share Files"),
-          ),
-
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("Chat"),
-          )
+                  Text(
+                    "Teacher's \n Corner",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 36.0, fontWeight: FontWeight.w500,
+                      fontFamily: 'Chalkduster',
+                      color: Colors.green,
+                    )
+                  )
+                ]
+              )
+            )
         ]
-      )
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Home"),
-    );
-  }
-}
-
-class ShareFiles extends StatelessWidget {
-  const ShareFiles({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Share Files"),
-    );
-  }
-}
-
-class Chat extends StatelessWidget {
-  const Chat({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text("Chat"),
+      ),
     );
   }
 }
