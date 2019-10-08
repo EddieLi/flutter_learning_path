@@ -7,9 +7,14 @@ class CreateProfile extends StatefulWidget {
 }
 
 class _CreateProfileState extends State<CreateProfile> {
+  final TextEditingController _userController = new TextEditingController();
+  final TextEditingController _emailController = new TextEditingController();
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("Create a Profile"),
         backgroundColor: Colors.deepPurple
@@ -21,6 +26,7 @@ class _CreateProfileState extends State<CreateProfile> {
             child: ListView(
               children: <Widget> [
                 TextFormField(
+                  controller: _userController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     hintText: 'Enter a User Name',
@@ -30,6 +36,7 @@ class _CreateProfileState extends State<CreateProfile> {
                 ),
 
                 TextFormField(
+                  controller: _emailController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     hintText: 'you@example.com',
@@ -39,7 +46,40 @@ class _CreateProfileState extends State<CreateProfile> {
                 ),
 
               ],
-            ),)
+            ),),
+
+            Positioned(
+              left: 5.0, 
+              right: 5.0,
+              bottom: 80.0,
+              child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text("Submit", style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                    padding: EdgeInsets.all(5.0),
+                    color: Colors.deepPurple,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                    onPressed: () => debugPrint("Submit buttin is pressed")
+                  ),
+
+
+                  RaisedButton(
+                    child: Text("Reset", style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                    padding: EdgeInsets.all(5.0),
+                    color: Colors.red,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                    onPressed: () => 
+                      setState(() {
+                        _userController.clear();
+                        _emailController.clear();
+                      })
+                  )
+
+                ],
+                )
+            )
         ],
       )
     );
