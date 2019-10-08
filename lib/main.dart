@@ -43,7 +43,49 @@ class HomeScreen extends StatelessWidget {
                       fontFamily: 'Chalkduster',
                       color: Colors.green,
                     )
-                  )
+                  ),
+
+                  Padding(padding: EdgeInsets.all(15.0),),
+
+                  Text(
+                    "An app to meet other teachers and share resources",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: 'Roboto',
+                      color: Colors.white,
+                    )
+                  ),
+
+                  Padding(padding: EdgeInsets.all(60.0),),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget> [
+                      OutlineButton(
+                        child: Text("Sign up", style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                        padding: const EdgeInsets.all(5.0),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        onPressed: () => debugPrint("Sign up pressed")
+                      ),
+
+                      OutlineButton(
+                        child: Text("Sign in", style: TextStyle(color: Colors.white, fontSize: 20.0)),
+                        padding: const EdgeInsets.all(5.0),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+                        onPressed: () => debugPrint("Sign in pressed")
+                      ),
+                    ],
+                  ),
+
+                  Padding(padding: EdgeInsets.all(60.0),),
+
+                  InkWell(
+                    onTap: () => debugPrint("Skip Button Pressed"),
+                    child: Text("Skip this for now!>>>",
+                    style: TextStyle(
+                      fontSize: 18.0, fontFamily: 'Roboto', color: Colors.white),
+                    ))
                 ]
               )
             )
