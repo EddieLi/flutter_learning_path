@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import './ui/create_profile.dart';
 
 void main() => runApp(new MaterialApp(
   home: new HomeScreen(),
@@ -66,8 +67,11 @@ class HomeScreen extends StatelessWidget {
                         child: Text("Sign up", style: TextStyle(color: Colors.white, fontSize: 20.0)),
                         padding: const EdgeInsets.all(5.0),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-                        onPressed: () => debugPrint("Sign up pressed")
-                      ),
+                        onPressed: () => 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => CreateProfile())
+                          )),
 
                       OutlineButton(
                         child: Text("Sign in", style: TextStyle(color: Colors.white, fontSize: 20.0)),
