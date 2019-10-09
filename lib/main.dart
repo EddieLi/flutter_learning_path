@@ -90,6 +90,7 @@ class _HomeState extends State<Home> {
                        setState(() {
                          _provider = _provider1;
                          _headlines = "BitCoin News";
+                         Navigator.pop(context);
                        });
                      }
                    ),
@@ -106,6 +107,7 @@ class _HomeState extends State<Home> {
                        setState(() {
                          _provider = _provider2;
                          _headlines = "Top Business News";
+                         Navigator.pop(context);
                        });
                      }
                    ),
@@ -122,6 +124,7 @@ class _HomeState extends State<Home> {
                        setState(() {
                          _provider = _provider3;
                          _headlines = "Apple News";
+                         Navigator.pop(context);
                        });
                      }
                    ),
